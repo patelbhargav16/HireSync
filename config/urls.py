@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -11,6 +12,7 @@ urlpatterns = [
     path("api/v1/recruiter/", include("recruiters.urls")),
     path("api/v1/jobs/", include("jobs.urls")),
     path("api/v1/resumes/", include("resumes.urls")),
+    path("api/v1/applications/", include("applications.urls")),
 ]
 
 if settings.DEBUG:
