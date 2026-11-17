@@ -1,61 +1,43 @@
-import re
 
-
-SKILLS_DATABASE = [
+SKILL_KEYWORDS = [
     "Python",
-    "Java",
-    "JavaScript",
-    "C++",
     "Django",
+    "Django REST Framework",
     "FastAPI",
     "Flask",
-    "REST API",
     "PostgreSQL",
     "MySQL",
     "MongoDB",
-    "SQLite",
-    "Redis",
     "SQL",
-    "HTML",
-    "CSS",
-    "React",
-    "Angular",
-    "Node.js",
+    "SQLAlchemy",
+    "REST API",
     "Docker",
-    "Kubernetes",
     "AWS",
-    "EC2",
-    "S3",
-    "Lambda",
     "Git",
     "GitHub",
+    "JWT",
+    "HTML",
+    "CSS",
+    "JavaScript",
     "Linux",
-    "Machine Learning",
-    "Deep Learning",
-    "Pandas",
-    "NumPy",
-    "Scikit-learn",
-    "TensorFlow",
-    "PyTorch",
+    "OOP",
+    "Redis",
     "Celery",
-    "SQLAlchemy",
+    "Kubernetes",
+    "Java",
 ]
 
 
-def extract_skills(resume_text):
-
-    if not resume_text:
+def extract_skills(text):
+    if not text:
         return []
+
+    text_lower = text.lower()
 
     found_skills = []
 
-    text = resume_text.lower()
-
-    for skill in SKILLS_DATABASE:
-
-        pattern = r"(?<!\w)" + re.escape(skill.lower()) + r"(?!\w)"
-
-        if re.search(pattern, text):
+    for skill in SKILL_KEYWORDS:
+        if skill.lower() in text_lower:
             found_skills.append(skill)
 
     return found_skills
